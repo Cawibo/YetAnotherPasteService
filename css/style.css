@@ -1,0 +1,19 @@
+.hide {
+	width:0;
+	height:0;
+	border:0;
+	border:none;
+}
+
+textarea {
+	height:100px;
+	width:700px;
+}
+
+input {
+	width:700px;
+}
+
+ul {
+	list-style-type: none;
+}

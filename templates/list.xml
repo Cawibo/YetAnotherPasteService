@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<!DOCTYPE pastes [
+
+<!ELEMENT pastes (paste*)>
+<!ELEMENT paste (id, name, content, type)>
+<!ELEMENT id (#PCDATA)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT content (#PCDATA)>
+<!ELEMENT type (#PCDATA)>
+]>
+
+<pastes>
+
+{% for paste in pastes %}
+
+	<paste>
+		<id>{{ paste[0] }}</id>
+		<name>{{ paste[1] }}</name>
+		<content>{{ paste[2] }}</content>
+		<type>{{ paste[3] }}</type>
+	</paste>
+
+{% endfor %}
+
+</pastes>
