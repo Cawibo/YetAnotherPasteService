@@ -26,9 +26,8 @@ def update():
 	name = request.form['name']
 	content = request.form['content']
 
-	query = "UPDATE pastes SET paste_name = '{}', paste_content = '{}' WHERE paste_id = '{}'".format(
-		name, content, p_id)
-	cursor.execute(query)
+	query = "UPDATE pastes SET paste_name = %s, paste_content = %s WHERE paste_id = %s"
+	cursor.execute(query, (name, content, p_id))
 	db.commit()
 
 	return "submitted!"
@@ -40,9 +39,8 @@ def upload():
 	content = request.form['content']
 	tpe = request.form['type']
 
-	query = "INSERT INTO pastes (paste_name, paste_content, paste_type) VALUES('{}', '{}', '{}')".format(
-		name, content, tpe)
-	cursor.execute(query)
+	query = "INSERT INTO pastes (paste_name, paste_content, paste_type) VALUES(%s, %s, %s)"
+	cursor.execute(query, (name, content, tpe))
 	db.commit()
 
 	return redirect("/", code=302)
@@ -76,4 +74,4 @@ def css(file):
 
 
 if __name__ == "__main__":
-	app.run(debug = True)
+	app.run(host='0.0.0.0', debug = True)
