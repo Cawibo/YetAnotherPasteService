@@ -1,13 +1,14 @@
 from flask import Flask, render_template, make_response, request, redirect
 import mysql.connector
 import lxml.etree as ET
+from db_credentials import credentials as cred
 
 app = Flask(__name__)
 
-db = mysql.connector.connect(host="localhost",
-	user="root",
-	passwd="hejsan123",
-	db="pastes")
+db = mysql.connector.connect(host=cred["host"],
+	user=cred["username"],
+	passwd=cred["password"],
+	db=cred["db"])
 
 cursor = db.cursor()
 
