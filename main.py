@@ -5,13 +5,6 @@ from db_credentials import credentials as cred
 
 app = Flask(__name__)
 
-db = mysql.connector.connect(host=cred["host"],
-	user=cred["username"],
-	passwd=cred["password"],
-	db=cred["db"])
-
-cursor = db.cursor()
-
 
 @app.route("/upload_form")
 def upload_form():
@@ -27,6 +20,13 @@ def update():
 	name = request.form['name']
 	content = request.form['content']
 
+	db = mysql.connector.connect(host=cred["host"],
+	user=cred["username"],
+	passwd=cred["password"],
+	db=cred["db"])
+
+	cursor = db.cursor()
+	
 	query = "UPDATE pastes SET paste_name = %s, paste_content = %s WHERE paste_id = %s"
 	cursor.execute(query, (name, content, p_id))
 	db.commit()
@@ -40,6 +40,13 @@ def upload():
 	content = request.form['content']
 	tpe = request.form['type']
 
+	db = mysql.connector.connect(host=cred["host"],
+	user=cred["username"],
+	passwd=cred["password"],
+	db=cred["db"])
+
+	cursor = db.cursor()
+	
 	query = "INSERT INTO pastes (paste_name, paste_content, paste_type) VALUES(%s, %s, %s)"
 	cursor.execute(query, (name, content, tpe))
 	db.commit()
@@ -53,6 +60,13 @@ def xslt(xml, xsl_path):
 
 @app.route("/")
 def list():
+	db = mysql.connector.connect(host=cred["host"],
+	user=cred["username"],
+	passwd=cred["password"],
+	db=cred["db"])
+
+	cursor = db.cursor()
+	
 	cursor.execute("SELECT * FROM pastes")
 	
 	parser = ET.XMLParser(dtd_validation=True)
