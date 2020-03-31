@@ -1,8 +1,8 @@
 # YetAnotherPasteService - YAPS
-At KTH there is a course (DM2517) which tackles premier publishing technologies. Namely, XML.
-At the time of writing hosted at: [https://yaps-223816.appspot.com/]
+At KTH there is a course (DM2517) which tackles the premier publishing technology XML.
 
-Would it be possible to gain access to my Google Instance using this app? Very likely... =P
+## Don't use this
+The input is *not* sanitized.
 
 ## What is YAPS?
 YAPS is a paste service powered by MySQL where the data is delivered in the form of XSL-Transformed XML.
